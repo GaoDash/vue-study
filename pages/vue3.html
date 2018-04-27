@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性侦听</title>
+	<script src="/assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>属&nbsp;性：{{message}}</p>
+		<input type="text" v-model='message'>
+		<p>计算属性：{{reserveMsg1}}</p>
+		<p>方法：{{reserveMsg2()}}</p>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				message: '我是你大爷'
+			},
+			computed: {
+				reserveMsg1: function(){
+					return this.message.split('').reverse().join('');
+				}
+			},
+			methods: {
+				reserveMsg2: function(){
+					return this.message.split('').reverse().join('');
+				}
+			}
+		});
+	</script>
+</body>
+</html>

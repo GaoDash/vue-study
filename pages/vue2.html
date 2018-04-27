@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<script src="/assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{a}}
+		<p>计算属性：{{reverseMsg}}</p>
+		<p>显示html文本: {{html}}</p>
+		<p>{{now}}</p>
+		<p>显示html转义: <span v-html="html"></span></p>
+		<button v-on:click="fuck('44')">click me</button>
+		<a v-bind:href = 'www'>百度</a>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				a: 'hellow vue',
+				html: '<span style="color: red">111</span>',
+				www: 'www.baidu.com'
+			},
+			created: function(){
+				console.log('a: ' + this.a);
+			},
+			methods: {
+				fuck: function(i){
+					console.log('fuck'+i);
+				}
+			},
+			computed: {
+				reverseMsg: function(){
+					return this.a.split('').reverse().join('');
+				},
+				now: function () {
+				    return Date.now()
+				}
+			}
+		});
+
+	</script>
+</body>
+</html>
